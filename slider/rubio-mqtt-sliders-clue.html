@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
+    <title>Slider</title>
+</head>
+
+<style>
+/* body{
+    background-color:#99ccff;
+} */
+.slidecontainer {
+  width: 25%;
+  /* border:1px solid black; */
+  box-shadow:-3px -1px 8px 0px black;
+  padding:30px;
+  margin-top: 40px;
+  margin-left:60px;
+  background: linear-gradient(to bottom, #ffffff 0%, #996633 100%);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 9px;
+  border-radius: 5px;
+  background: #5F9EA0;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 21px;
+  height: 22px;
+  border-radius:50%;
+  background:linear-gradient(to left, #66ffff 0%, #0033cc 100%);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: #4CAF50;
+  cursor: pointer;
+}
+h1{
+
+    text-align:center;
+    background: linear-gradient(to top right, #66ffff 0%, #0000ff 100%);
+    padding: 35px;
+    margin-top:20px;
+}
+
+.alignDiv{
+    display:flex;
+    margin-left:90px;
+}
+</style>
+<body>
+    <div>
+        <h1>CLUE SLIDER</h1>
+    </div>
+     <!-- Accelerometer -->
+    <div class="alignDiv">
+
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="X-Accelerometer" onmouseup="publishFunction()"><br><br>
+                <p>X-Accelerometer: <span id="X-Accelerometervalue"></span></p>
+            </center>
+        
+        </div>
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="Y-Accelerometer"><br><br>
+                <p>Y-Accelerometer: <span id="Y-Accelerometervalue"></span></p>
+            </center>
+        
+        </div>
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="Z-Accelerometer"><br><br>
+                <p>Z-Accelerometer: <span id="Z-Accelerometervalue"></span></p>
+            </center>
+        
+        </div>
+    </div>
+
+    <!-- Gyroscope -->
+
+    <div class="alignDiv">
+
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="X-Gyroscope"><br><br>
+                <p>X-Gyroscope: <span id="X-Gyroscopevalue"></span></p>
+            </center>
+        
+        </div>
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="Y-Gyroscope"><br><br>
+                <p>Y-Gyroscope: <span id="Y-Gyroscopevalue"></span></p>
+            </center>
+        
+        </div>
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="Z-Gyroscope"><br><br>
+                <p>Z-Gyroscope: <span id="Z-Gyroscopevalue"></span></p>
+            </center>
+        
+        </div>
+    </div>
+
+    <!-- Magnetic -->
+    <div class="alignDiv">
+
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="X-Magnetic"><br><br>
+                <p>X-Magnetic: <span id="X-Magneticvalue"></span></p>
+            </center>
+        
+        </div>
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="Y-Magnetic"><br><br>
+                <p>Y-Magnetic: <span id="Y-Magneticvalue"></span></p>
+            </center>
+        
+        </div>
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="120" value="0" class="slider" id="Z-Magnetic"><br><br>
+                <p>Z-Magnetic: <span id="Z-Magneticvalue"></span></p>
+            </center>
+        
+        </div>
+    </div>
+
+    <div class="alignDiv">
+         <!-- Pressure -->
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="800" max="1100" value="800" class="slider" id="Pressure"><br><br>
+                <p>Pressure: <span id="Pressurevalue"></span></p>
+            </center>
+        
+        </div>
+        <!-- Temperature -->
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="-55" max="125" value="0" class="slider" id="Temperature"><br><br>
+                <p>Temperature: <span id="Temperaturevalue"></span></p>
+            </center>
+        
+        </div>
+        <!-- Humidity -->
+        <div class="slidecontainer">
+            <center>
+                <input type="range" min="0" max="100" value="0" class="slider" id="Humidity"><br><br>
+                <p>Humidity: <span id="Humidityvalue"></span></p>
+            </center>
+        
+        </div>
+    </div>
+
+    <!-- colors -->
+    
+    <div class="alignDiv">
+        <!-- Color Red -->
+       <div class="slidecontainer">
+           <center>
+               <input type="range" min="0" max="100" value="0" class="slider" id="red"><br><br>
+               <p>R-Color: <span id="redvalue"></span></p>
+           </center>
+       
+       </div>
+       <!-- Color Green -->
+       <div class="slidecontainer">
+           <center>
+               <input type="range" min="0" max="100" value="0" class="slider" id="green"><br><br>
+               <p>G-Color: <span id="greenvalue"></span></p>
+           </center>
+       
+       </div>
+       <!-- Color Blue-->
+       <div class="slidecontainer">
+           <center>
+               <input type="range" min="0" max="100" value="0" class="slider" id="blue"><br><br>
+               <p>B-Color: <span id="bluevalue"></span></p>
+           </center>
+       
+       </div>
+   </div>
+
+   <div class="alignDiv">
+    <!-- Pproximity -->
+   <div class="slidecontainer">
+       <center>
+           <input type="range" min="0" max="255" value="0" class="slider" id="proximity"><br><br>
+           <p>Proximity: <span id="proximityvalue"></span></p>
+       </center>
+   
+   </div>
+   <!-- Light Intensity -->
+   <div class="slidecontainer">
+       <center>
+           <input type="range" min="0" max="100" value="0" class="slider" id="light" onmouseup="publishFunction()"><br><br>
+           <p>Light Intensity: <span id="lightvalue"></span></p>
+       </center>
+   
+   </div>
+</div>
+
+   <script src="./browserMqtt.js"></script>
+   <script src="./rubio-mqtt-sliders-clue.js"></script>
+</body>
+
+</html>
+
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders</title> -->
+
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+    <!-- jQuery library -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!-- Latest compiled JavaScript -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+h1{
+    text-align: center;
+} -->
+
+<!-- .slidecontainer {
+  width: 30%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  /* width: 100%; Full-width */
+  height: 8px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  border-radius: 45%;
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 27px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    </style>
+</head>
+<body> -->
+    <!-- <h1>Adafruit CLUE Sliders</h1> -->
+    <!-- <h4 id="status-header">Connecting...</h4> -->
+    <!-- <div>
+        <div class="slidecontainer container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <p>Temperature: <span id="demo"></span></p>
+                </div>
+                <div class="col-xs-10">
+                    <input type="range" min="-55" max="125" value="0" class="slider" id="myRange">
+                </div>
+            </div>
+        </div>
+    </div> -->
+      <!-- <script src="./browserMqtt.js"></script>
+      <script>
+        
+        var broker = 'wss://mqtt.eclipse.org:443/mqtt';
+        var client  = mqtt.connect(broker);
+
+        var status_header = document.getElementById('status-header')
+
+        client.on('connect', function () {
+            status_header.innerHTML = 'Connected to '+broker; 
+            console.log('Connected to '+broker)
+        })
+        
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value; // Display the default slider value
+        
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+
+        slider.onmouseup = function() {
+            console.log(this.value)
+            client.publish('clue-slider', this.value)
+        }
+        
+        </script> -->
+<!-- </body>
+</html> -->
